@@ -25,14 +25,269 @@
 
 (add-to-list 'load-path (expand-file-name "lisp" "~/.emacs.d/"))
 
-(require 'init-ui)
-(require 'init-basic)
-(require 'init-dired)
-(require 'init-terminal)
-(require 'init-dev)
-(require 'init-company)
-(require 'init-yasnippet)
-(require 'init-python-mode)
+;; =============================================================
+;; UI
+;; =============================================================
+
+(global-font-lock-mode t)
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(show-paren-mode t)
+(setq show-paren-style 'parentheses)
+
+(delete-selection-mode t)
+(transient-mark-mode t)
+(setq x-select-enable-clipboard t)
+(setq initial-frame-alist (quote ((fullscreen . maximized))))
+
+(setq-default indicate-empty-lines t)
+(when (not indicate-empty-lines)
+  (toggle-indicate-empty-lines))
+
+(if (not (display-graphic-p))
+    (progn
+      (xterm-mouse-mode t)
+      (menu-bar-mode -1))
+  (progn
+    (menu-bar-mode -1)
+    (tool-bar-mode -1)
+    (scroll-bar-mode -1)))
+
+;; =============================================================
+;; BASIC STUFF
+;; =============================================================
+
+(cond
+ ((string-equal system-type "gnu/linux")
+  (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH")))
+  )
+ ((string-equal system-type "darwin")
+  (setenv "PATH" (concat "~/Library/Python/2.7/bin" ":" (getenv "PATH")))
+  )
+ )
+
+(use-package smex
+  :bind (("M-x" . smex)
+	 ("M-X" . smex-major-mode-commands)
+	 ("C-c C-c M-x" . execute-extended-command))
+  :config (smex-initialize))
+
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+
+(winner-mode 1)
+
+(use-package ibuffer
+  :bind ("C-x C-b" . ibuffer))
+
+(global-set-key (kbd "RET") 'newline-and-indent)
+
+(use-package ido
+  :config
+  (ido-mode 1)
+  :init
+  (progn
+    (setq ido-enable-flex-matching t)
+    ;; (setq ido-use-filename-at-point 'guess)
+    (setq ido-everywhere t)
+    (setq ido-auto-merge-work-directories-length -1))
+  :bind (("C-x b" . ido-switch-buffer)
+	 ("C-x B" . ido-switch-buffer-other-window)))
+
+(use-package ido-vertical-mode
+  :config
+  (ido-vertical-mode 1)
+  :init
+  (setq ido-vertical-show-count t))
+
+(use-package electric-indent-mode
+  :disabled t)
+
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode))
+
+(use-package projectile
+  :config
+  (projectile-global-mode)
+  :diminish
+  :bind-keymap ("C-c p" . projectile-command-map))
+
+(global-set-key (kbd "<f10>") 'rename-buffer)
+
+(cond
+ ((string-equal system-type "gnu/linux")
+  (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH")))
+  )
+ ((string-equal system-type "darwin")
+  (setenv "PATH" (concat "~/Library/Python/2.7/bin" ":" (getenv "PATH")))
+  )
+ )
+
+(use-package smex
+  :bind (("M-x" . smex)
+	 ("M-X" . smex-major-mode-commands)
+	 ("C-c C-c M-x" . execute-extended-command))
+  :config (smex-initialize))
+
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+
+(winner-mode 1)
+
+(use-package ibuffer
+  :bind ("C-x C-b" . ibuffer))
+
+(global-set-key (kbd "RET") 'newline-and-indent)
+
+(use-package ido
+  :config
+  (ido-mode 1)
+  :init
+  (progn
+    (setq ido-enable-flex-matching t)
+    ;; (setq ido-use-filename-at-point 'guess)
+    (setq ido-everywhere t)
+    (setq ido-auto-merge-work-directories-length -1))
+  :bind (("C-x b" . ido-switch-buffer)
+	 ("C-x B" . ido-switch-buffer-other-window)))
+
+(use-package ido-vertical-mode
+  :config
+  (ido-vertical-mode 1)
+  :init
+  (setq ido-vertical-show-count t))
+
+;; (use-package electric-indent-mode
+;;   :disabled t)
+
+(use-package undo-tree
+  :diminish
+  :config
+  (global-undo-tree-mode))
+
+(use-package projectile
+  :config
+  (projectile-global-mode)
+  :diminish
+  :bind-keymap ("C-c p" . projectile-command-map))
+
+(global-set-key (kbd "<f10>") 'rename-buffer)
+
+(use-package ztree)
+
+;; =============================================================
+;; SYSTEM
+;; =============================================================
+
+(use-package shell
+  :config
+  (progn
+    (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+    (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+    (setq shell-file-name "/bin/bash")))
+
+(use-package term
+  :bind ("C-c t" . term))
+
+(require 'dired)
+(setq dired-recursive-deletes 'always)
+(setq dired-recursive-copies 'alway)
+(put 'dired-find-alternate-file 'disabled nil)
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)) ;; lazy-load
+(setq dired-dwim-target t)
+
+;; =============================================================
+;; DEV
+;; =============================================================
+
+(use-package company
+  :config
+  (global-company-mode)
+  (setq company-backends (delete 'company-xcode company-backends))
+  (setq company-show-numbers t
+	company-idle-delay 0.2))
+
+(use-package idomenu
+  :bind (:map prog-mode-hook
+	      ("C-c C-j" . idomenu)))
+
+(use-package linum
+  :hook (prog-mode . linum-mode))
+
+(electric-indent-mode -1)
+
+(use-package ace-jump-mode)
+
+(use-package evil
+  :commands evil-mode
+  :config
+  (modify-syntax-entry ?_ "w")
+  (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  :hook (prog-mode . evil-mode))
+
+(use-package evil-leader
+  :config
+  (evil-leader/set-leader "<SPC>")
+  (evil-leader/set-key
+   "w" 'ace-jump-mode
+   "j i" 'idomenu)
+  :hook (prog-mode . evil-leader-mode))
+
+(use-package sr-speedbar
+  :bind ("C-\\" . sr-speedbar-toggle))
+
+(use-package clean-aindent-mode
+  :hook (prog-mode . clean-aindent-mode))
+
+(use-package autopair
+  :diminish
+  :hook (prog-mode . autopair-mode))
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package yasnippet
+  :after prog-mode
+  :diminish yas-minor-mode
+  :bind (("C-c y d" . yas-load-directory)
+         ("C-c y i" . yas-insert-snippet)
+         ("C-c y f" . yas-visit-snippet-file)
+         ("C-c y n" . yas-new-snippet)
+         ("C-c y t" . yas-tryout-snippet)
+         ("C-c y l" . yas-describe-tables)
+         ("C-c y g" . yas/global-mode)
+         ("C-c y m" . yas/minor-mode)
+         ("C-c y a" . yas-reload-all)
+         ("C-c y x" . yas-expand))
+  :bind (:map yas-keymap
+              ("C-i" . yas-next-field-or-maybe-expand))
+  :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
+  :config
+  (yas-global-mode 1))
+
+(use-package python-mode
+  :mode "\\.py\\'"
+  :interpreter "python"
+  :bind (:map python-mode-map
+	      ("C-c c")
+	      ("C-c C-z" . python-shell)))
+
+(use-package pyvenv)
+(use-package elpy
+  :after company
+  :config
+  (elpy-enable))
+
+(use-package magit)
+(use-package flycheck)
+
+;; =============================================================
+;; ORG
+;; =============================================================
+
+;;; ** AUTO GENERATED CODE BELOW **
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -40,7 +295,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (rainbow-delimiters autopair clean-aindent-mode sr-speedbar idomenu dired ido-vertical-mode use-package smex diminish company))))
+    (python-mode yasnippet rainbow-delimiters autopair clean-aindent-mode sr-speedbar ace-jump-mode idomenu projectile undo-tree ido-vertical-mode smex diminish use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
