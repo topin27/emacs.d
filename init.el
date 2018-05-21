@@ -57,14 +57,14 @@
 ;; BASIC STUFF
 ;; =============================================================
 
-(cond
- ((string-equal system-type "gnu/linux")
-  (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH")))
-  )
- ((string-equal system-type "darwin")
-  (setenv "PATH" (concat "~/Library/Python/2.7/bin" ":" (getenv "PATH")))
-  )
- )
+;; (cond
+;;  ((string-equal system-type "gnu/linux")
+;;   (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH")))
+;;   )
+;;  ((string-equal system-type "darwin")
+;;   (setenv "PATH" (concat "~/Library/Python/2.7/bin" ":" (getenv "PATH")))
+;;   )
+;;  )
 
 (use-package smex
   :bind (("M-x" . smex)
@@ -102,64 +102,6 @@
 
 (use-package electric-indent-mode
   :disabled t)
-
-(use-package undo-tree
-  :config
-  (global-undo-tree-mode))
-
-(use-package projectile
-  :config
-  (projectile-global-mode)
-  :diminish
-  :bind-keymap ("C-c p" . projectile-command-map))
-
-(global-set-key (kbd "<f10>") 'rename-buffer)
-
-(cond
- ((string-equal system-type "gnu/linux")
-  (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH")))
-  )
- ((string-equal system-type "darwin")
-  (setenv "PATH" (concat "~/Library/Python/2.7/bin" ":" (getenv "PATH")))
-  )
- )
-
-(use-package smex
-  :bind (("M-x" . smex)
-	 ("M-X" . smex-major-mode-commands)
-	 ("C-c C-c M-x" . execute-extended-command))
-  :config (smex-initialize))
-
-(setq make-backup-files nil)
-(setq auto-save-default nil)
-
-(winner-mode 1)
-
-(use-package ibuffer
-  :bind ("C-x C-b" . ibuffer))
-
-(global-set-key (kbd "RET") 'newline-and-indent)
-
-(use-package ido
-  :config
-  (ido-mode 1)
-  :init
-  (progn
-    (setq ido-enable-flex-matching t)
-    ;; (setq ido-use-filename-at-point 'guess)
-    (setq ido-everywhere t)
-    (setq ido-auto-merge-work-directories-length -1))
-  :bind (("C-x b" . ido-switch-buffer)
-	 ("C-x B" . ido-switch-buffer-other-window)))
-
-(use-package ido-vertical-mode
-  :config
-  (ido-vertical-mode 1)
-  :init
-  (setq ido-vertical-show-count t))
-
-;; (use-package electric-indent-mode
-;;   :disabled t)
 
 (use-package undo-tree
   :diminish
@@ -210,6 +152,7 @@
 	company-idle-delay 0.2))
 
 (use-package idomenu
+  :config (semantic-mode t)
   :bind (:map prog-mode-hook
 	      ("C-c C-j" . idomenu)))
 
@@ -218,22 +161,23 @@
 
 (electric-indent-mode -1)
 
-(use-package ace-jump-mode)
+(use-package ace-jump-mode
+  :bind ("C-z" . ace-jump-mode))
 
-(use-package evil
-  :commands evil-mode
-  :config
-  (modify-syntax-entry ?_ "w")
-  (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-  :hook (prog-mode . evil-mode))
-
-(use-package evil-leader
-  :config
-  (evil-leader/set-leader "<SPC>")
-  (evil-leader/set-key
-   "w" 'ace-jump-mode
-   "j i" 'idomenu)
-  :hook (prog-mode . evil-leader-mode))
+;; (use-package evil
+;;   :commands evil-mode
+;;   :config
+;;   (modify-syntax-entry ?_ "w")
+;;   (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+;;   :hook (python-mode elisp-mode c-common-mode))
+;; 
+;; (use-package evil-leader
+;;   :config
+;;   (evil-leader/set-leader "<SPC>")
+;;   (evil-leader/set-key
+;;    "w" 'ace-jump-mode
+;;    "j i" 'idomenu)
+;;   :hook (prog-mode . evil-leader-mode))
 
 (use-package sr-speedbar
   :bind ("C-\\" . sr-speedbar-toggle))
@@ -270,35 +214,43 @@
 (use-package python-mode
   :mode "\\.py\\'"
   :interpreter "python"
+  :config
+  (flymake-mode -1)
   :bind (:map python-mode-map
 	      ("C-c c")
 	      ("C-c C-z" . python-shell)))
 
 (use-package pyvenv)
+
 (use-package elpy
   :after company
   :config
   (elpy-enable))
 
-(use-package magit)
-(use-package flycheck)
+(use-package magit
+  :bind (("C-x g" . magit-status)
+	 ("C-x G" . magit-status-with-prefix)))
+
+(use-package ensime
+  :config
+  (setq ensime-sbt-command "~/Workspace/scala/sbt/bin/sbt"
+	sbt:program-name "~/Workspace/scala/sbt/bin/sbt"))
 
 ;; =============================================================
 ;; ORG
 ;; =============================================================
 
+(use-package org
+  :config
+  (add-hook 'org-mode-hook
+	    (lambda ()
+	      (flyspell-mode 1)
+	      (toggle-truncate-lines -1)))
+  :bind (("C-c o c" . org-capture)
+	 ("C-c o a" . org-agenda)
+	 ("C-c o l" . org-store-link))
+  :init
+  (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "|" "DONE(d)"))
+	org-todo-keyword-faces '(("DOING" . (:foreground "cyan" :weight bold)))))
+
 ;;; ** AUTO GENERATED CODE BELOW **
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (python-mode yasnippet rainbow-delimiters autopair clean-aindent-mode sr-speedbar ace-jump-mode idomenu projectile undo-tree ido-vertical-mode smex diminish use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
