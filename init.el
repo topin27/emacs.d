@@ -57,14 +57,14 @@
 ;; BASIC STUFF
 ;; =============================================================
 
-;; (cond
-;;  ((string-equal system-type "gnu/linux")
-;;   (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH")))
-;;   )
-;;  ((string-equal system-type "darwin")
-;;   (setenv "PATH" (concat "~/Library/Python/2.7/bin" ":" (getenv "PATH")))
-;;   )
-;;  )
+(cond
+ ((string-equal system-type "gnu/linux")
+  (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH")))
+  )
+ ((string-equal system-type "darwin")
+  (setenv "PATH" (concat "~/Library/Python/2.7/bin" ":" (getenv "PATH")))
+  )
+ )
 
 (use-package smex
   :bind (("M-x" . smex)
@@ -235,6 +235,18 @@
   :config
   (setq ensime-sbt-command "~/Workspace/scala/sbt/bin/sbt"
 	sbt:program-name "~/Workspace/scala/sbt/bin/sbt"))
+
+(use-package eclim
+  :config
+  (setq eclimd-autostart nil) ;; start eclimd manually
+  (setq eclim-eclipse-dirs "/Applications/Eclipse.app/"
+	eclim-executable "/Applications/Eclipse.app/Contents/Eclipse/plugins/org.eclim_2.7.2/bin/eclim")
+  :hook (java-mode . eclim-mode))
+
+(use-package company-emacs-eclim
+  :after (company eclim)
+  :config
+  (company-emacs-eclim-setup))
 
 ;; =============================================================
 ;; ORG
