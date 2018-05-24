@@ -161,23 +161,29 @@
 
 (electric-indent-mode -1)
 
-(use-package ace-jump-mode
-  :bind ("C-z" . ace-jump-mode))
+(use-package ace-jump-mode)
 
-;; (use-package evil
-;;   :commands evil-mode
-;;   :config
-;;   (modify-syntax-entry ?_ "w")
-;;   (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-;;   :hook (python-mode elisp-mode c-common-mode))
-;; 
-;; (use-package evil-leader
-;;   :config
-;;   (evil-leader/set-leader "<SPC>")
-;;   (evil-leader/set-key
-;;    "w" 'ace-jump-mode
-;;    "j i" 'idomenu)
-;;   :hook (prog-mode . evil-leader-mode))
+(use-package evil
+  :init
+  (setq evil-default-state 'emacs)
+  (evil-mode 1)
+  :commands evil-mode
+  :config
+  (modify-syntax-entry ?_ "w")
+  (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  (loop for (mode . state) in '((python-mode . normal)
+				(emacs-lisp-mode . normal)
+				(c-common-mode . normal)
+				(term-mode . emacs))
+	do (evil-set-initial-state mode state)))
+
+(use-package evil-leader
+  :config
+  (global-evil-leader-mode)
+  (evil-leader/set-leader "<SPC>")
+  (evil-leader/set-key
+   "w" 'ace-jump-mode
+   "j i" 'idomenu))
 
 (use-package sr-speedbar
   :bind ("C-\\" . sr-speedbar-toggle))
@@ -195,18 +201,18 @@
 (use-package yasnippet
   :after prog-mode
   :diminish yas-minor-mode
-  :bind (("C-c y d" . yas-load-directory)
-         ("C-c y i" . yas-insert-snippet)
-         ("C-c y f" . yas-visit-snippet-file)
-         ("C-c y n" . yas-new-snippet)
-         ("C-c y t" . yas-tryout-snippet)
-         ("C-c y l" . yas-describe-tables)
-         ("C-c y g" . yas/global-mode)
-         ("C-c y m" . yas/minor-mode)
-         ("C-c y a" . yas-reload-all)
-         ("C-c y x" . yas-expand))
-  :bind (:map yas-keymap
-              ("C-i" . yas-next-field-or-maybe-expand))
+  ;; :bind (("C-c y d" . yas-load-directory)
+  ;;        ("C-c y i" . yas-insert-snippet)
+  ;;        ("C-c y f" . yas-visit-snippet-file)
+  ;;        ("C-c y n" . yas-new-snippet)
+  ;;        ("C-c y t" . yas-tryout-snippet)
+  ;;        ("C-c y l" . yas-describe-tables)
+  ;;        ("C-c y g" . yas/global-mode)
+  ;;        ("C-c y m" . yas/minor-mode)
+  ;;        ("C-c y a" . yas-reload-all)
+  ;;        ("C-c y x" . yas-expand))
+  ;; :bind (:map yas-keymap
+  ;;             ("C-i" . yas-next-field-or-maybe-expand))
   :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
   :config
   (yas-global-mode 1))
@@ -231,22 +237,10 @@
   :bind (("C-x g" . magit-status)
 	 ("C-x G" . magit-status-with-prefix)))
 
-(use-package ensime
-  :config
-  (setq ensime-sbt-command "~/Workspace/scala/sbt/bin/sbt"
-	sbt:program-name "~/Workspace/scala/sbt/bin/sbt"))
-
-(use-package eclim
-  :config
-  (setq eclimd-autostart nil) ;; start eclimd manually
-  (setq eclim-eclipse-dirs "/Applications/Eclipse.app/"
-	eclim-executable "/Applications/Eclipse.app/Contents/Eclipse/plugins/org.eclim_2.7.2/bin/eclim")
-  :hook (java-mode . eclim-mode))
-
-(use-package company-emacs-eclim
-  :after (company eclim)
-  :config
-  (company-emacs-eclim-setup))
+;; (use-package ensime
+;;   :config
+;;   (setq ensime-sbt-command "~/Workspace/scala/sbt/bin/sbt"
+;; 	sbt:program-name "~/Workspace/scala/sbt/bin/sbt"))
 
 ;; =============================================================
 ;; ORG
@@ -256,7 +250,7 @@
   :config
   (add-hook 'org-mode-hook
 	    (lambda ()
-	      (flyspell-mode 1)
+	      (flyspell-mode -1)
 	      (toggle-truncate-lines -1)))
   :bind (("C-c o c" . org-capture)
 	 ("C-c o a" . org-agenda)
