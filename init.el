@@ -59,12 +59,9 @@
 
 (cond
  ((string-equal system-type "gnu/linux")
-  (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH")))
-  )
+  (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH"))))
  ((string-equal system-type "darwin")
-  (setenv "PATH" (concat "~/Library/Python/2.7/bin" ":" (getenv "PATH")))
-  )
- )
+  (setenv "PATH" (concat "~/Library/Python/2.7/bin" ":" "/usr/local/bin" ":" (getenv "PATH")))))
 
 (use-package smex
   :bind (("M-x" . smex)
@@ -140,6 +137,13 @@
   (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)) ;; lazy-load
 (setq dired-dwim-target t)
 
+(cond
+ ((string-equal system-type "gnu/linux")
+  (add-to-list 'exec-path "~/.local/bin"))
+ ((string-equal system-type "darwin")
+  (add-to-list 'exec-path "/usr/local/bin")
+  (add-to-list 'exec-path "~/Library/Python/2.7/bin/")))
+
 ;; =============================================================
 ;; DEV
 ;; =============================================================
@@ -163,27 +167,27 @@
 
 (use-package ace-jump-mode)
 
-(use-package evil
-  :init
-  (setq evil-default-state 'emacs)
-  (evil-mode 1)
-  :commands evil-mode
-  :config
-  (modify-syntax-entry ?_ "w")
-  (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-  (loop for (mode . state) in '((python-mode . normal)
-				(emacs-lisp-mode . normal)
-				(c-common-mode . normal)
-				(term-mode . emacs))
-	do (evil-set-initial-state mode state)))
+;; (use-package evil
+;;   :init
+;;   (setq evil-default-state 'emacs)
+;;   (evil-mode 1)
+;;   :commands evil-mode
+;;   :config
+;;   (modify-syntax-entry ?_ "w")
+;;   (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+;;   (loop for (mode . state) in '((python-mode . normal)
+;; 				(emacs-lisp-mode . normal)
+;; 				(c-common-mode . normal)
+;; 				(term-mode . emacs))
+;; 	do (evil-set-initial-state mode state)))
 
-(use-package evil-leader
-  :config
-  (global-evil-leader-mode)
-  (evil-leader/set-leader "<SPC>")
-  (evil-leader/set-key
-   "w" 'ace-jump-mode
-   "j i" 'idomenu))
+;; (use-package evil-leader
+;;   :config
+;;   (global-evil-leader-mode)
+;;   (evil-leader/set-leader "<SPC>")
+;;   (evil-leader/set-key
+;;    "w" 'ace-jump-mode
+;;    "j i" 'idomenu))
 
 (use-package sr-speedbar
   :bind ("C-\\" . sr-speedbar-toggle))
@@ -230,17 +234,15 @@
 
 (use-package elpy
   :after company
+  :init
+  (setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i --simple-prompt")
   :config
   (elpy-enable))
 
 (use-package magit
   :bind (("C-x g" . magit-status)
 	 ("C-x G" . magit-status-with-prefix)))
-
-;; (use-package ensime
-;;   :config
-;;   (setq ensime-sbt-command "~/Workspace/scala/sbt/bin/sbt"
-;; 	sbt:program-name "~/Workspace/scala/sbt/bin/sbt"))
 
 ;; =============================================================
 ;; ORG
