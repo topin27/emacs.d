@@ -115,8 +115,6 @@
 
 (use-package ztree)
 
-(use-package better-defaults)
-
 ;; =============================================================
 ;; SYSTEM
 ;; =============================================================
@@ -169,27 +167,27 @@
 
 (use-package ace-jump-mode)
 
-(use-package evil
-  :init
-  (setq evil-default-state 'emacs)
-  (evil-mode 1)
-  :commands evil-mode
-  :config
-  (modify-syntax-entry ?_ "w")
-  (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-  (loop for (mode . state) in '((python-mode . normal)
-				(emacs-lisp-mode . normal)
-				(c-common-mode . normal)
-				(term-mode . emacs))
-	do (evil-set-initial-state mode state)))
+;; (use-package evil
+;;   :init
+;;   (setq evil-default-state 'emacs)
+;;   (evil-mode 1)
+;;   :commands evil-mode
+;;   :config
+;;   (modify-syntax-entry ?_ "w")
+;;   (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+;;   (loop for (mode . state) in '((python-mode . normal)
+;; 				(emacs-lisp-mode . normal)
+;; 				(c-common-mode . normal)
+;; 				(term-mode . emacs))
+;; 	do (evil-set-initial-state mode state)))
 
-(use-package evil-leader
-  :config
-  (global-evil-leader-mode)
-  (evil-leader/set-leader "<SPC>")
-  (evil-leader/set-key
-   "w" 'ace-jump-mode
-   "j i" 'idomenu))
+;; (use-package evil-leader
+;;   :config
+;;   (global-evil-leader-mode)
+;;   (evil-leader/set-leader "<SPC>")
+;;   (evil-leader/set-key
+;;    "w" 'ace-jump-mode
+;;    "j i" 'idomenu))
 
 (use-package sr-speedbar
   :bind ("C-\\" . sr-speedbar-toggle))
