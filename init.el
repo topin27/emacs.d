@@ -32,6 +32,9 @@
 (global-font-lock-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(column-number-mode t)
+(line-number-mode t)
+
 (show-paren-mode t)
 (setq show-paren-style 'parentheses)
 
@@ -73,6 +76,9 @@
 (setq auto-save-default nil)
 
 (winner-mode 1)
+
+(setq default-buffer-file-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
 (use-package ibuffer
   :bind ("C-x C-b" . ibuffer))
@@ -164,36 +170,35 @@
   :bind (:map prog-mode-hook
 	      ("C-c C-j" . idomenu)))
 
-(use-package linum
-  :hook (prog-mode . linum-mode))
-
 (electric-indent-mode -1)
 
-(use-package ace-jump-mode)
+(use-package ace-jump-mode
+  :bind ("C-z" . ace-jump-mode))
 
-(use-package evil
-  :init
-  (setq evil-default-state 'emacs)
-  (setq evil-want-C-i-jump nil)
-  (evil-mode 1)
-  :commands evil-mode
-  :config
-  (modify-syntax-entry ?_ "w")
-  (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-  (loop for (mode . state) in '((python-mode . normal)
-				(emacs-lisp-mode . normal)
-				(c-common-mode . normal)
-				(markdown-mode . normal)
-				(term-mode . emacs))
-	do (evil-set-initial-state mode state)))
+;; (use-package evil
+;;   :init
+;;   (setq evil-default-state 'emacs)
+;;   (setq evil-want-C-i-jump nil)
+;;   (evil-mode 1)
+;;   :commands evil-mode
+;;   :config
+;;   (modify-syntax-entry ?_ "w")
+;;   (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+;;   (loop for (mode . state) in '((python-mode . normal)
+;; 				(emacs-lisp-mode . normal)
+;; 				(c-common-mode . normal)
+;; 				(markdown-mode . normal)
+;; 				(org-mode . emacs)
+;; 				(term-mode . emacs))
+;; 	do (evil-set-initial-state mode state)))
 
-(use-package evil-leader
-  :config
-  (global-evil-leader-mode)
-  (evil-leader/set-leader "<SPC>")
-  (evil-leader/set-key
-   "w" 'ace-jump-mode
-   "j i" 'idomenu))
+;; (use-package evil-leader
+;;   :config
+;;   (global-evil-leader-mode)
+;;   (evil-leader/set-leader "<SPC>")
+;;   (evil-leader/set-key
+;;    "w" 'ace-jump-mode
+;;    "j i" 'idomenu))
 
 (use-package sr-speedbar
   :bind ("C-\\" . sr-speedbar-toggle))
