@@ -1,0 +1,57 @@
+[submodule "site-lisp/diminish"]
+	path = site-lisp/diminish
+	url = https://github.com/myrjola/diminish.el.git
+[submodule "site-lisp/ace-jump-mode"]
+	path = site-lisp/ace-jump-mode
+	url = https://github.com/winterTTr/ace-jump-mode.git
+[submodule "site-lisp/undo-tree"]
+	path = site-lisp/undo-tree
+	url = https://github.com/akhayyat/emacs-undo-tree.git
+[submodule "site-lisp/projectile"]
+	path = site-lisp/projectile
+	url = https://github.com/bbatsov/projectile.git
+[submodule "site-lisp/smex"]
+	path = site-lisp/smex
+	url = https://github.com/nonsequitur/smex.git
+[submodule "site-lisp/ido-vertical-mode"]
+	path = site-lisp/ido-vertical-mode
+	url = https://github.com/creichert/ido-vertical-mode.el.git
+[submodule "site-lisp/ztree"]
+	path = site-lisp/ztree
+	url = https://github.com/fourier/ztree.git
+[submodule "site-lisp/company"]
+	path = site-lisp/company
+	url = https://github.com/company-mode/company-mode.git
+[submodule "site-lisp/evil"]
+	path = site-lisp/evil
+	url = https://github.com/emacs-evil/evil.git
+[submodule "site-lisp/evil-leader"]
+	path = site-lisp/evil-leader
+	url = https://github.com/cofi/evil-leader.git
+[submodule "site-lisp/evil-surround"]
+	path = site-lisp/evil-surround
+	url = https://github.com/emacs-evil/evil-surround.git
+[submodule "site-lisp/imenu-list"]
+	path = site-lisp/imenu-list
+	url = https://github.com/bmag/imenu-list.git
+[submodule "site-lisp/idomenu"]
+	path = site-lisp/idomenu
+	url = https://github.com/emacsmirror/idomenu.git
+[submodule "site-lisp/rainbow-delimiters"]
+	path = site-lisp/rainbow-delimiters
+	url = https://github.com/Fanael/rainbow-delimiters.git
+[submodule "site-lisp/clean-aindent-mode"]
+	path = site-lisp/clean-aindent-mode
+	url = https://github.com/pmarinov/clean-aindent-mode.git
+[submodule "site-lisp/anaconda-mode"]
+	path = site-lisp/anaconda-mode
+	url = https://github.com/proofit404/anaconda-mode.git
+[submodule "site-lisp/magit"]
+	path = site-lisp/magit
+	url = https://github.com/magit/magit.git
+[submodule "site-lisp/flycheck"]
+	path = site-lisp/flycheck
+	url = https://github.com/flycheck/flycheck.git
+[submodule "site-lisp/markdown-mode"]
+	path = site-lisp/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode.git
