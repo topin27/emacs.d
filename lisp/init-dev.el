@@ -2,6 +2,7 @@
 (electric-pair-mode t)
 (electric-indent-mode t)
 
+(require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 (require 'clean-aindent-mode)
@@ -23,6 +24,9 @@
 	    (local-set-key (kbd "<f5>") 'anaconda-mode-find-definitions)
 	    (local-set-key (kbd "<f6>") 'anaconda-mode-go-back)))
 
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
+(require 'magit)
+
+(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 (provide 'init-dev)

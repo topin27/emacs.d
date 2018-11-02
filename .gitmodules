@@ -55,3 +55,21 @@
 [submodule "site-lisp/markdown-mode"]
 	path = site-lisp/markdown-mode
 	url = https://github.com/jrblevin/markdown-mode.git
+[submodule "site-lisp/dash"]
+	path = site-lisp/dash
+	url = https://github.com/magnars/dash.el.git
+[submodule "site-lisp/magit-popup"]
+	path = site-lisp/magit-popup
+	url = https://github.com/magit/magit-popup.git
+[submodule "site-lisp/with-editor"]
+	path = site-lisp/with-editor
+	url = https://github.com/magit/with-editor.git
+[submodule "site-lisp/ghub"]
+	path = site-lisp/ghub
+	url = https://github.com/magit/ghub.git
+[submodule "site-lisp/graphql"]
+	path = site-lisp/graphql
+	url = https://github.com/vermiculus/graphql.el.git
+[submodule "site-lisp/treepy"]
+	path = site-lisp/treepy
+	url = https://github.com/volrath/treepy.el.git
