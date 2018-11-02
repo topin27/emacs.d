@@ -104,7 +104,7 @@ Position the cursor at it's beginning, according to the current mode."
 (require 'ztree)
 
 (require 'imenu-list)
-(global-set-key (kbd "C-'") #'imenu-list-smart-toggle)
+(global-set-key (kbd "C-'") 'imenu-list-smart-toggle)
 (setq imenu-list-auto-resize t)
 
 (require 'evil)
@@ -118,8 +118,8 @@ Position the cursor at it's beginning, according to the current mode."
 (require 'evil-leader)
 (global-evil-leader-mode)
 (evil-leader/set-key
- "b" 'switch-to-buffer
- "f" 'find-file
+ "b" 'projectile-switch-to-buffer
+ "f" 'projectile-find-file
  "j i" 'idomenu)
 
 (require 'evil-surround)

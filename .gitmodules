@@ -19,9 +19,6 @@
 [submodule "site-lisp/ztree"]
 	path = site-lisp/ztree
 	url = https://github.com/fourier/ztree.git
-[submodule "site-lisp/company"]
-	path = site-lisp/company
-	url = https://github.com/company-mode/company-mode.git
 [submodule "site-lisp/evil"]
 	path = site-lisp/evil
 	url = https://github.com/emacs-evil/evil.git
@@ -43,12 +40,6 @@
 [submodule "site-lisp/clean-aindent-mode"]
 	path = site-lisp/clean-aindent-mode
 	url = https://github.com/pmarinov/clean-aindent-mode.git
-[submodule "site-lisp/anaconda-mode"]
-	path = site-lisp/anaconda-mode
-	url = https://github.com/proofit404/anaconda-mode.git
-[submodule "site-lisp/magit"]
-	path = site-lisp/magit
-	url = https://github.com/magit/magit.git
 [submodule "site-lisp/flycheck"]
 	path = site-lisp/flycheck
 	url = https://github.com/flycheck/flycheck.git
@@ -58,18 +49,3 @@
 [submodule "site-lisp/dash"]
 	path = site-lisp/dash
 	url = https://github.com/magnars/dash.el.git
-[submodule "site-lisp/magit-popup"]
-	path = site-lisp/magit-popup
-	url = https://github.com/magit/magit-popup.git
-[submodule "site-lisp/with-editor"]
-	path = site-lisp/with-editor
-	url = https://github.com/magit/with-editor.git
-[submodule "site-lisp/ghub"]
-	path = site-lisp/ghub
-	url = https://github.com/magit/ghub.git
-[submodule "site-lisp/treepy"]
-	path = site-lisp/treepy
-	url = https://github.com/volrath/treepy.el.git
-[submodule "site-lisp/graphql"]
-	path = site-lisp/graphql
-	url = https://github.com/vermiculus/graphql.el.git
