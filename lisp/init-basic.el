@@ -1,3 +1,9 @@
+;;; init-basic --- 初始化日常操作相关包及绑定
+
+;;; Commentary:
+
+;;; Code:
+
 ;; (cond
 ;;  ((string-equal system-type "gnu/linux")
 ;;   (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH"))))
@@ -15,7 +21,8 @@
 
 (winner-mode 1)
 
-(setq default-buffer-file-coding-system 'utf-8)
+;; (setq default-buffer-file-coding-system 'utf-8)
+(setq buffer-file-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -104,7 +111,7 @@ Position the cursor at it's beginning, according to the current mode."
 (require 'ztree)
 
 (require 'imenu-list)
-(global-set-key (kbd "C-'") 'imenu-list-smart-toggle)
+(global-set-key (kbd "C-\\") 'imenu-list-smart-toggle)
 (setq imenu-list-auto-resize t)
 
 (require 'evil)
@@ -126,3 +133,5 @@ Position the cursor at it's beginning, according to the current mode."
 (global-evil-surround-mode 1)
 
 (provide 'init-basic)
+
+;;; init-basic ends here
