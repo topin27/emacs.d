@@ -1,3 +1,9 @@
+;;; init-org --- 写作相关的设置
+
+;;; Commentary:
+
+;;; Code:
+
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
@@ -19,3 +25,5 @@
       org-todo-keyword-faces '(("DOING" . (:foreground "cyan" :weight bold))))
 
 (provide 'init-org)
+
+;;; init-org ends here

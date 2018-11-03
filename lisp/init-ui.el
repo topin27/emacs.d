@@ -1,4 +1,8 @@
-;; UI stuff
+;;; init-ui --- 界面相关的设置
+
+;;; Commentary:
+
+;;; Code:
 
 (global-font-lock-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -20,10 +24,10 @@
 
 (if (not (display-graphic-p))
     (progn
-      (xterm-mouse-mode t)
-      (menu-bar-mode -1))
+      (xterm-mouse-mode t))
+      ;; (menu-bar-mode -1))
   (progn
-    (menu-bar-mode -1)
+    ;; (menu-bar-mode -1)
     (tool-bar-mode -1)
     (scroll-bar-mode -1)))
 
@@ -36,7 +40,10 @@
 (eval-after-load "company" '(diminish 'company-mode))
 ;; (eval-after-load "autopair" '(diminish 'autopair-mode))
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
+(eval-after-load "yasnippet" '(diminish 'yas-minor-mode))
 ;; (eval-after-load "anaconda" '(diminish 'anaconda-mode))
 ;; (diminish 'projectile-mode)
 
 (provide 'init-ui)
+
+;;; init-ui ends here

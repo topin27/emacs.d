@@ -14,16 +14,11 @@
 (require 'clean-aindent-mode)
 (add-hook 'prog-mode-hook 'clean-aindent-mode)
 
-(require 'pythonic)
-
-(require 'anaconda-mode)
-(add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-(eval-after-load "company"
-  '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
-
-(require 'xcscope)
-(cscope-setup)
+(add-hook 'c-mode-common-hook
+	  '(lambda()
+	     (require 'xcscope)
+	     (setq cscope-do-not-update-database t)
+	     (cscope-setup)))
 
 (require 'yasnippet)
 (setq yas-snippet-dirs
@@ -31,7 +26,12 @@
         ;; "/path/to/yasnippet/yasmate/snippets" ;; the yasmate collection
 	"~/.emacs.d/site-lisp/yasnippet-snippets/snippets" ;; the yasnippet-snippets collection
         ))
-(yas-global-mode 1)
+;; (yas-global-mode 1)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
+
+(add-hook 'python-mode-hook
+	  '(lambda ()
+	     (require 'pyvenv)))
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -39,6 +39,7 @@
   '(setq company-backends (delete 'company-eclim (delete 'company-xcode company-backends))))
 (setq company-show-numbers t
       company-idle-delay 0.2)
+(require 'company-yasnippet)
 (global-set-key (kbd "C-c y") 'company-yasnippet)
 
 (require 'flycheck)

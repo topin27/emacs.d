@@ -4,17 +4,18 @@
 
 ;;; Code:
 
-;; (cond
-;;  ((string-equal system-type "gnu/linux")
-;;   (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH"))))
-;;  ((string-equal system-type "darwin")
-;;   (setenv "PATH" (concat "~/Library/Python/2.7/bin" ":" "/usr/local/bin" ":" (getenv "PATH")))))
+(cond
+ ((string-equal system-type "gnu/linux")
+  (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH"))))
+ ((string-equal system-type "darwin")
+  (setenv "PATH" (concat "~/Library/Python/2.7/bin" ":" "/usr/local/bin" ":" (getenv "PATH")))))
 
 (cond
  ((string-equal system-type "gnu/linux")
   (add-to-list 'exec-path "~/.local/bin"))
  ((string-equal system-type "darwin")
-  (add-to-list 'exec-path "~/Library/Python/2.7/bin/")))
+  (add-to-list 'exec-path "~/Library/Python/2.7/bin/")
+  (add-to-list 'exec-path "/usr/local/bin/")))
 
 (setq make-backup-files nil)
 (setq auto-save-default nil)
@@ -116,8 +117,10 @@ Position the cursor at it's beginning, according to the current mode."
 
 (require 'evil)
 (evil-mode 1)
+;; (setq evil-default-state 'emacs)
 (modify-syntax-entry ?_ "w")
-(loop for (mode . state) in '((org-mode . emacs)
+(loop for (mode . state) in '((org-mode . normal)
+			      (prog-mode . normal)
 			      (term-mode . emacs))
       do (evil-set-initial-state mode state))
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
