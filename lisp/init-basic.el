@@ -108,6 +108,7 @@ Position the cursor at it's beginning, according to the current mode."
 (setq ido-vertical-show-count t)
 
 (require 'idomenu)
+(global-set-key (kbd "C-c j i") 'idomenu)
 
 (require 'ztree)
 
@@ -127,10 +128,14 @@ Position the cursor at it's beginning, according to the current mode."
 
 (require 'evil-leader)
 (global-evil-leader-mode)
+(evil-leader/set-leader ",")
 (evil-leader/set-key
- "b" 'projectile-switch-to-buffer
- "f" 'projectile-find-file
- "j i" 'idomenu)
+  "f" 'projectile-find-file
+  "b" 'projectile-switch-to-buffer
+  "g g" 'xref-find-definitions
+  "g b" 'xref-pop-marker-stack
+  "g c" 'xref-find-references
+  "j i" 'idomenu)
 
 (require 'evil-surround)
 (global-evil-surround-mode 1)

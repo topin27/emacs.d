@@ -22,9 +22,6 @@
 [submodule "site-lisp/evil"]
 	path = site-lisp/evil
 	url = https://github.com/emacs-evil/evil.git
-[submodule "site-lisp/evil-leader"]
-	path = site-lisp/evil-leader
-	url = https://github.com/cofi/evil-leader.git
 [submodule "site-lisp/evil-surround"]
 	path = site-lisp/evil-surround
 	url = https://github.com/emacs-evil/evil-surround.git
@@ -64,3 +61,18 @@
 [submodule "site-lisp/pyvenv"]
 	path = site-lisp/pyvenv
 	url = https://github.com/jorgenschaefer/pyvenv.git
+[submodule "site-lisp/lsp-mode"]
+	path = site-lisp/lsp-mode
+	url = https://github.com/emacs-lsp/lsp-mode.git
+[submodule "site-lisp/lsp-python"]
+	path = site-lisp/lsp-python
+	url = https://github.com/emacs-lsp/lsp-python.git
+[submodule "site-lisp/company-lsp"]
+	path = site-lisp/company-lsp
+	url = https://github.com/tigersoldier/company-lsp.git
+[submodule "site-lisp/s"]
+	path = site-lisp/s
+	url = https://github.com/magnars/s.el.git
+[submodule "site-lisp/evil-leader"]
+	path = site-lisp/evil-leader
+	url = https://github.com/cofi/evil-leader.git

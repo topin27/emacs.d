@@ -29,14 +29,18 @@
 ;; (yas-global-mode 1)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
-(add-hook 'python-mode-hook
-	  '(lambda ()
-	     (require 'pyvenv)))
-
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (eval-after-load "company"
   '(setq company-backends (delete 'company-eclim (delete 'company-xcode company-backends))))
+;; (eval-after-load "company"
+;;   '(setq company-backends
+;; 	 '((company-dabbrev
+;; 	    company-dabbrev-code)
+;; 	   (company-files
+;; 	    company-keywords
+;; 	    company-capf
+;; 	    company-etags))))
 (setq company-show-numbers t
       company-idle-delay 0.2)
 (require 'company-yasnippet)
@@ -44,6 +48,19 @@
 
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+(require 'lsp-mode)
+(require 'lsp-imenu)
+(add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
+
+(require 'company-lsp)
+(add-hook 'python-mode-hook
+	  '(lambda ()
+	     (push 'company-lsp company-backends)))
+
+(require 'pyvenv)
+(require 'lsp-python)
+(add-hook 'python-mode-hook #'lsp-python-enable)
 
 (provide 'init-dev)
 

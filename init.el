@@ -26,6 +26,10 @@
 (add-to-list 'load-path (expand-file-name "site-lisp/xcscope" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "site-lisp/yasnippet" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "site-lisp/pyvenv" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "site-lisp/company-lsp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "site-lisp/lsp-mode" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "site-lisp/lsp-python" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "site-lisp/s" user-emacs-directory))
 
 (setq user-full-name "Yang Tianping")
 (setq user-mail-address "yangtianpingytp@163.com")
