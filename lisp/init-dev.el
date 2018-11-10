@@ -49,18 +49,15 @@
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-(require 'lsp-mode)
-(require 'lsp-imenu)
-(add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
+(require 'anaconda-mode)
+(add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 
-(require 'company-lsp)
-(add-hook 'python-mode-hook
-	  '(lambda ()
-	     (push 'company-lsp company-backends)))
+(require 'company-anaconda)
+(eval-after-load "company"
+ '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
 
 (require 'pyvenv)
-(require 'lsp-python)
-(add-hook 'python-mode-hook #'lsp-python-enable)
 
 (provide 'init-dev)
 

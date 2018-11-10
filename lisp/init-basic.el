@@ -128,7 +128,7 @@ Position the cursor at it's beginning, according to the current mode."
 
 (require 'evil-leader)
 (global-evil-leader-mode)
-(evil-leader/set-leader ",")
+;; (evil-leader/set-leader ",")
 (evil-leader/set-key
   "f" 'projectile-find-file
   "b" 'projectile-switch-to-buffer
