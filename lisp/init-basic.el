@@ -118,7 +118,7 @@ Position the cursor at it's beginning, according to the current mode."
 
 (require 'evil)
 (evil-mode 1)
-;; (setq evil-default-state 'emacs)
+(setq evil-default-state 'emacs)
 (modify-syntax-entry ?_ "w")
 (loop for (mode . state) in '((org-mode . normal)
 			      (prog-mode . normal)
@@ -128,13 +128,13 @@ Position the cursor at it's beginning, according to the current mode."
 
 (require 'evil-leader)
 (global-evil-leader-mode)
-;; (evil-leader/set-leader ",")
+(evil-leader/set-leader ",")
 (evil-leader/set-key
   "f" 'projectile-find-file
   "b" 'projectile-switch-to-buffer
-  "g g" 'xref-find-definitions
-  "g b" 'xref-pop-marker-stack
-  "g c" 'xref-find-references
+  ;; "g g" 'xref-find-definitions
+  ;; "g b" 'xref-pop-marker-stack
+  ;; "g c" 'xref-find-references
   "j i" 'idomenu)
 
 (require 'evil-surround)

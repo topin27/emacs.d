@@ -14,11 +14,14 @@
 (require 'clean-aindent-mode)
 (add-hook 'prog-mode-hook 'clean-aindent-mode)
 
+(require 'xcscope)
+(setq cscope-do-not-update-database t)
 (add-hook 'c-mode-common-hook
 	  '(lambda()
-	     (require 'xcscope)
-	     (setq cscope-do-not-update-database t)
-	     (cscope-setup)))
+	     (cscope-setup)
+	     (evil-leader/set-key "g g" 'cscope-find-global-definition-no-prompting)
+	     (evil-leader/set-key "g b" 'cscope-pop-mark)
+	     (evil-leader/set-key "g c" 'cscope-find-functions-calling-this-function)))
 
 (require 'yasnippet)
 (setq yas-snippet-dirs
@@ -49,15 +52,12 @@
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-(require 'anaconda-mode)
-(add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-
-(require 'company-anaconda)
-(eval-after-load "company"
- '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
-
 (require 'pyvenv)
+(add-hook 'python-mode-hook
+	  '(lambda ()
+	     (evil-leader/set-key "g g" 'cscope-find-global-definition-no-prompting)
+	     (evil-leader/set-key "g b" 'cscope-pop-mark)
+	     (evil-leader/set-key "g c" 'cscope-find-functions-calling-this-function)))
 
 (provide 'init-dev)
 

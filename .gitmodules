@@ -67,15 +67,6 @@
 [submodule "site-lisp/evil-leader"]
 	path = site-lisp/evil-leader
 	url = https://github.com/cofi/evil-leader.git
-[submodule "site-lisp/pythonic"]
-	path = site-lisp/pythonic
-	url = https://github.com/proofit404/pythonic.git
-[submodule "site-lisp/anaconda-mode"]
-	path = site-lisp/anaconda-mode
-	url = https://github.com/proofit404/anaconda-mode.git
-[submodule "site-lisp/company-anaconda"]
-	path = site-lisp/company-anaconda
-	url = https://github.com/proofit404/company-anaconda.git
 [submodule "site-lisp/f"]
 	path = site-lisp/f
 	url = https://github.com/rejeep/f.el.git
