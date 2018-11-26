@@ -79,3 +79,15 @@
 [submodule "site-lisp/company-anaconda"]
 	path = site-lisp/company-anaconda
 	url = https://github.com/proofit404/company-anaconda.git
+[submodule "site-lisp/dumb-jump"]
+	path = site-lisp/dumb-jump
+	url = https://github.com/jacktasia/dumb-jump.git
+[submodule "site-lisp/popup-el"]
+	path = site-lisp/popup-el
+	url = https://github.com/auto-complete/popup-el.git
+[submodule "site-lisp/indent-guide"]
+	path = site-lisp/indent-guide
+	url = https://github.com/zk-phi/indent-guide.git
+[submodule "site-lisp/Emacs-wgrep"]
+	path = site-lisp/Emacs-wgrep
+	url = https://github.com/mhayashi1120/Emacs-wgrep.git

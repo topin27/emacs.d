@@ -14,14 +14,11 @@
 (require 'clean-aindent-mode)
 (add-hook 'prog-mode-hook 'clean-aindent-mode)
 
-(require 'xcscope)
-(setq cscope-do-not-update-database t)
-(add-hook 'c-mode-common-hook
-	  '(lambda()
-	     (cscope-setup)
-	     (evil-leader/set-key "g g" 'cscope-find-global-definition-no-prompting)
-	     (evil-leader/set-key "g b" 'cscope-pop-mark)
-	     (evil-leader/set-key "g c" 'cscope-find-functions-calling-this-function)))
+(require 'dumb-jump)
+(evil-leader/set-key
+  "g g" 'dumb-jump-go
+  "g b" 'dumb-jump-back
+  "g p" 'dumb-jump-quick-look)
 
 (require 'yasnippet)
 (setq yas-snippet-dirs
@@ -49,23 +46,9 @@
 (require 'company-yasnippet)
 (global-set-key (kbd "C-c y") 'company-yasnippet)
 
-(require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-
-(require 'pyvenv)
-
-(require 'company)
-(add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-(add-hook 'python-mode-hook
-	  '(lambda ()
-	     (evil-leader/set-key "g g" 'anaconda-mode-find-definitions)
-	     (evil-leader/set-key "g b" 'anaconda-mode-go-back)
-	     (evil-leader/set-key "g c" 'anaconda-mode-find-references)))
-
-(require 'company-anaconda)
-(eval-after-load "company"
-   '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
+(require 'indent-guide)
+(setq indent-guide-char ":")
+(add-hook 'python-mode-hook 'indent-guide-mode)
 
 (provide 'init-dev)
 
