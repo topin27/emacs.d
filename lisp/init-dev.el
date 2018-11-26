@@ -57,6 +57,11 @@
 (require 'company)
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+(add-hook 'python-mode-hook
+	  '(lambda ()
+	     (evil-leader/set-key "g g" 'anaconda-mode-find-definitions)
+	     (evil-leader/set-key "g b" 'anaconda-mode-go-back)
+	     (evil-leader/set-key "g c" 'anaconda-mode-find-references)))
 
 (require 'company-anaconda)
 (eval-after-load "company"
