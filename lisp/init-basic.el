@@ -118,17 +118,17 @@ Position the cursor at it's beginning, according to the current mode."
 
 (require 'evil)
 (evil-mode 1)
-(setq evil-default-state 'emacs)
+(setq evil-default-state 'normal)
 (modify-syntax-entry ?_ "w")
 (loop for (mode . state) in '((org-mode . normal)
 			      (prog-mode . normal)
 			      (term-mode . emacs))
       do (evil-set-initial-state mode state))
-(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
+(define-key evil-normal-state-map (kbd ",") 'ace-jump-mode)
 
 (require 'evil-leader)
 (global-evil-leader-mode)
-(evil-leader/set-leader ",")
+(evil-leader/set-leader "SPC")
 (evil-leader/set-key
   "f" 'projectile-find-file
   "b" 'projectile-switch-to-buffer

@@ -33,7 +33,6 @@
 
 (which-function-mode -1)
 (linum-mode -1)
-(add-hook 'prog-mode-hook (lambda () (linum-mode t)))
 
 (require 'diminish)
 (eval-after-load "projectile" '(diminish 'projectile-mode))

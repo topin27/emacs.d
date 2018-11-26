@@ -53,11 +53,14 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (require 'pyvenv)
-(add-hook 'python-mode-hook
-	  '(lambda ()
-	     (evil-leader/set-key "g g" 'cscope-find-global-definition-no-prompting)
-	     (evil-leader/set-key "g b" 'cscope-pop-mark)
-	     (evil-leader/set-key "g c" 'cscope-find-functions-calling-this-function)))
+
+(require 'company)
+(add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+
+(require 'company-anaconda)
+(eval-after-load "company"
+   '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
 
 (provide 'init-dev)
 
