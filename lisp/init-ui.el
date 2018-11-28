@@ -32,14 +32,13 @@
     (scroll-bar-mode -1)))
 
 (which-function-mode -1)
-(add-hook 'prog-mode-hook 'linum-mode)
+(linum-mode -1)
+;; (add-hook 'prog-mode-hook 'linum-mode)
 
 (require 'diminish)
 (eval-after-load "projectile" '(diminish 'projectile-mode))
-(eval-after-load "company" '(diminish 'company-mode))
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 (eval-after-load "yasnippet" '(diminish 'yas-minor-mode))
-(eval-after-load "anaconda" '(diminish 'anaconda-mode))
 ;; (diminish 'projectile-mode)
 
 (provide 'init-ui)

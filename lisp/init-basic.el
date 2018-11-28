@@ -50,6 +50,7 @@
 (require 'projectile)
 (projectile-mode +1)
 (setq projectile-enable-caching t)
+(add-to-list 'projectile-globally-ignored-directories "^\.*")
 
 (require 'smex) ; Not needed if you use package.el
 (smex-initialize) ; Can be omitted. This might cause a (minimal) delay

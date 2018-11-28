@@ -19,11 +19,19 @@
 (my-local-leader-def 'normal
 		     "f" 'projectile-find-file
 		     "b" 'projectile-switch-to-buffer
+		     "p" 'projectile-switch-open-project
 		     "j i" 'idomenu
 		     "g g" 'dumb-jump-go
 		     "g b" 'dumb-jump-back
 		     "g p" 'dumb-jump-quick-look
 		     )
+(general-define-key
+ :keymaps 'normal
+ "C-l" 'windmove-right
+ "C-h" 'windmove-left
+ "C-j" 'windmove-down
+ "C-k" 'windmove-up
+)
 (general-define-key
  :prefix "C-c"
  "SPC" 'ace-jump-mode
@@ -33,7 +41,6 @@
  "o c" 'org-capture
  "o a" 'org-agenda
  "o l" 'org-store-link
- ;; "y" 'company-yasnippet
  "C-c M-x" 'execute-extended-command  ;; old M-x
  )
 (general-define-key
@@ -42,7 +49,8 @@
  "C-x C-b" 'ibuffer
  "RET" 'newline-and-indent
  "<f10>" 'rename-buffer
- "<escape>" 'keyboard-escape-quit)
+ "<escape>" 'keyboard-escape-quit
+ )
 
 (provide 'init-keymap)
 
