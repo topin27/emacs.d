@@ -8,3 +8,4 @@ compile:
 	cd site-lisp/evil-surround; make compile
 	cd site-lisp/company; make compile
 	cd site-lisp/markdown-mode; make
+	cd site-lisp/pyvenv; make

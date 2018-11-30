@@ -21,17 +21,10 @@
 		     "b" 'projectile-switch-to-buffer
 		     "p" 'projectile-switch-open-project
 		     "j i" 'idomenu
-		     "g g" 'dumb-jump-go
-		     "g b" 'dumb-jump-back
-		     "g p" 'dumb-jump-quick-look
+		     "g g" 'xref-find-definitions
+		     "g b" 'xref-pop-marker-stack
+		     "g c" 'xref-find-references
 		     )
-(general-define-key
- :keymaps 'normal
- "C-l" 'windmove-right
- "C-h" 'windmove-left
- "C-j" 'windmove-down
- "C-k" 'windmove-up
-)
 (general-define-key
  :prefix "C-c"
  "SPC" 'ace-jump-mode
@@ -42,10 +35,12 @@
  "o a" 'org-agenda
  "o l" 'org-store-link
  "C-c M-x" 'execute-extended-command  ;; old M-x
+ "y" 'company-yasnippet
  )
 (general-define-key
  "M-x" 'smex
  "M-X" 'smex-major-mode-commands
+ "M-/" 'hippie-expand
  "C-x C-b" 'ibuffer
  "RET" 'newline-and-indent
  "<f10>" 'rename-buffer
