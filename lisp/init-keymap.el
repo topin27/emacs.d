@@ -12,6 +12,9 @@
 	       "b" 'ido-switch-buffer
 	       "k" 'ido-kill-buffer
 	       "p" 'projectile-switch-project
+	       "g g" 'xref-find-definitions
+	       "g b" 'xref-pop-marker-stack
+	       "g c" 'xref-find-references
 	       )
 (general-create-definer my-local-leader-def
 			;; :prefix my-local-leader
@@ -21,9 +24,6 @@
 		     "b" 'projectile-switch-to-buffer
 		     "p" 'projectile-switch-open-project
 		     "j i" 'idomenu
-		     "g g" 'xref-find-definitions
-		     "g b" 'xref-pop-marker-stack
-		     "g c" 'xref-find-references
 		     )
 (general-define-key
  :prefix "C-c"

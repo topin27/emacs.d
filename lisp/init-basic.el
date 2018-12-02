@@ -25,6 +25,7 @@
 ;; (setq default-buffer-file-coding-system 'utf-8)
 (setq buffer-file-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
+(windmove-default-keybindings)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; For packages

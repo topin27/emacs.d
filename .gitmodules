@@ -64,12 +64,3 @@
 [submodule "site-lisp/company-mode"]
 	path = site-lisp/company-mode
 	url = https://github.com/company-mode/company-mode.git
-[submodule "site-lisp/elpy"]
-	path = site-lisp/elpy
-	url = https://github.com/jorgenschaefer/elpy.git
-[submodule "site-lisp/pyvenv"]
-	path = site-lisp/pyvenv
-	url = https://github.com/jorgenschaefer/pyvenv.git
-[submodule "site-lisp/find-file-in-project"]
-	path = site-lisp/find-file-in-project
-	url = https://github.com/technomancy/find-file-in-project.git

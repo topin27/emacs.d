@@ -40,17 +40,6 @@
       company-idle-delay 0.1)
 (require 'company-yasnippet)
 
-(require 'elpy)
-;; (setq elpy-modules (delete 'elpy-module-highlight-indentation elpy-modules))
-(setq elpy-modules
-      '(elpy-module-sane-defaults
-	elpy-module-company
-	elpy-module-eldoc
-	elpy-module-pyvenv))
-(elpy-enable)
-(setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "-i --simple-prompt")
-
 (provide 'init-dev)
 
 ;;; init-dev ends here
