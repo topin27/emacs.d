@@ -86,6 +86,7 @@
 (modify-syntax-entry ?_ "w")
 (loop for (mode . state) in '((org-mode . normal)
 			      (prog-mode . normal)
+			      (shell-mode . emacs)
 			      (term-mode . emacs))
       do (evil-set-initial-state mode state))
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)

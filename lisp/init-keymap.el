@@ -12,6 +12,7 @@
 	       "b" 'ido-switch-buffer
 	       "k" 'ido-kill-buffer
 	       "p" 'projectile-switch-project
+	       "o" 'find-file-other-window
 	       "g g" 'xref-find-definitions
 	       "g b" 'xref-pop-marker-stack
 	       "g c" 'xref-find-references
@@ -23,6 +24,8 @@
 		     "f" 'projectile-find-file
 		     "b" 'projectile-switch-to-buffer
 		     "p" 'projectile-switch-open-project
+		     "o" 'projectile-find-file-other-window
+		     "k" 'projectile-kill-buffers
 		     "j i" 'idomenu
 		     )
 (general-define-key

@@ -25,10 +25,12 @@
 ;; (add-hook 'prog-mode-hook #'yas-minor-mode)
 
 (require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
+(setq company-show-numbers t
+      company-idle-delay 0.1)
 (eval-after-load "company"
   '(setq company-backends (delete 'company-eclim (delete 'company-xcode company-backends))))
 ;; (eval-after-load "company"
+(add-hook 'after-init-hook 'global-company-mode)
 ;;   '(setq company-backends
 ;; 	 '((company-dabbrev
 ;; 	    company-dabbrev-code)
@@ -36,8 +38,6 @@
 ;; 	    company-keywords
 ;; 	    company-capf
 ;; 	    company-etags))))
-(setq company-show-numbers t
-      company-idle-delay 0.1)
 (require 'company-yasnippet)
 
 (provide 'init-dev)
