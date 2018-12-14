@@ -35,7 +35,6 @@
 (require 'init-dev)
 (require 'init-org)
 (require 'init-keymap)
-(require 'cython-mode)
 
 (provide 'init)
 ;;; init.el ends here

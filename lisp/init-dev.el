@@ -32,13 +32,17 @@
 ;; (eval-after-load "company"
 (add-hook 'after-init-hook 'global-company-mode)
 ;;   '(setq company-backends
-;; 	 '((company-dabbrev
+;; 	 '(company-dabbrev
 ;; 	    company-dabbrev-code)
 ;; 	   (company-files
 ;; 	    company-keywords
 ;; 	    company-capf
 ;; 	    company-etags))))
 (require 'company-yasnippet)
+
+(require 'cython-mode)
+(setq auto-mode-alist
+      (cons '(".pyx" . cython-mode) auto-mode-alist))
 
 (provide 'init-dev)
 
