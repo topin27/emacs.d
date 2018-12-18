@@ -25,7 +25,12 @@
 ;; (setq default-buffer-file-coding-system 'utf-8)
 (setq buffer-file-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-(windmove-default-keybindings)
+
+;; (windmove-default-keybindings)
+(global-set-key (kbd "s-k") 'windmove-up)
+(global-set-key (kbd "s-j") 'windmove-down)
+(global-set-key (kbd "s-h") 'windmove-left)
+(global-set-key (kbd "s-l") 'windmove-right)
 
 (global-auto-revert-mode 1)
 
