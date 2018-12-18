@@ -91,8 +91,8 @@
 
 (setq evil-want-C-i-jump nil)
 (require 'evil)
-(evil-mode 1)
 (setq evil-default-state 'normal)
+(evil-mode 1)
 (modify-syntax-entry ?_ "w")
 (loop for (mode . state) in '((org-mode . normal)
 			      (prog-mode . normal)
