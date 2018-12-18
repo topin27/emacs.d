@@ -18,6 +18,8 @@
 (setq select-enable-clipboard t)
 (setq initial-frame-alist (quote ((fullscreen . maximized))))
 
+(setq cursor-type 'bar)
+
 (setq-default indicate-empty-lines t)
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))

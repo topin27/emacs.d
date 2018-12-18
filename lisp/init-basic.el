@@ -27,6 +27,8 @@
 (prefer-coding-system 'utf-8)
 (windmove-default-keybindings)
 
+(global-auto-revert-mode 1)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; For packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -38,6 +40,9 @@
 (with-eval-after-load 'dired
   (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)) ;; lazy-load
 (setq dired-dwim-target t)
+
+;; (require 'popwin)
+;; (popwin-mode 1)
 
 (autoload
   'ace-jump-mode
@@ -96,6 +101,13 @@
 
 (require 'wgrep)
 (setq wgrep-auto-save-buffer t)
+
+(require 'hungry-delete)
+(global-hungry-delete-mode)
+
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-item 10)
 
 (provide 'init-basic)
 

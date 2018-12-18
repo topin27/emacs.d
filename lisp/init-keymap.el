@@ -11,6 +11,7 @@
 	       "f" 'find-file
 	       "b" 'ido-switch-buffer
 	       "k" 'ido-kill-buffer
+	       "r" 'recentf-open-files
 	       "p" 'projectile-switch-project
 	       "o" 'find-file-other-window
 	       "g g" 'xref-find-definitions
@@ -48,6 +49,7 @@
  "RET" 'newline-and-indent
  "<f10>" 'rename-buffer
  "<escape>" 'keyboard-escape-quit
+ "C-x C-r" 'recentf-open-files
  )
 
 (provide 'init-keymap)

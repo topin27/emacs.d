@@ -1,7 +1,7 @@
 .PHONY: all compile
 
 all:
-	cd site-lisp; git submodule update --init
+	cd site-lisp; git submodule update
 
 compile:
 	cd site-lisp/evil; make compile
