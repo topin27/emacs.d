@@ -29,6 +29,7 @@
       (xterm-mouse-mode t)
       (menu-bar-mode -1))
   (progn
+    (load-theme 'deeper-blue)
     ;; (menu-bar-mode -1)
     (tool-bar-mode -1)
     (scroll-bar-mode -1)))

@@ -4,6 +4,8 @@
 
 ;;; Code:
 
+(windmove-default-keybindings)
+
 (require 'general)
 (general-create-definer my-leader-def
 			:prefix "\\")

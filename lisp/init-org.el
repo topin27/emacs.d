@@ -20,6 +20,7 @@
 ;; (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "|" "DONE(d)"))
       org-todo-keyword-faces '(("DOING" . (:foreground "cyan" :weight bold))))
+(setq org-src-fontify-natively t)
 
 (provide 'init-org)
 
