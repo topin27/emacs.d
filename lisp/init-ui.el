@@ -26,13 +26,19 @@
 
 (if (not (display-graphic-p))
     (progn
-      (xterm-mouse-mode t)
+      ;; (xterm-mouse-mode t)
       (menu-bar-mode -1))
   (progn
     (load-theme 'deeper-blue)
     ;; (menu-bar-mode -1)
     (tool-bar-mode -1)
     (scroll-bar-mode -1)))
+
+(setq redisplay-dont-pause t
+      scroll-margin 1
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
 
 (which-function-mode -1)
 (add-hook 'prog-mode-hook 'linum-mode)

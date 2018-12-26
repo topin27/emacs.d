@@ -12,6 +12,7 @@
 (my-leader-def 'normal
 	       "f" 'find-file
 	       "b" 'ido-switch-buffer
+	       "d" 'ido-dired
 	       "k" 'ido-kill-buffer
 	       "r" 'recentf-open-files
 	       "p" 'projectile-switch-project
@@ -36,7 +37,6 @@
  "SPC" 'ace-jump-mode
  "p" 'projectile-command-map
  "j i" 'idomenu
- "\\" 'imenu-list-smart-toggle
  "o c" 'org-capture
  "o a" 'org-agenda
  "o l" 'org-store-link
@@ -52,6 +52,7 @@
  "<f10>" 'rename-buffer
  "<escape>" 'keyboard-escape-quit
  "C-x C-r" 'recentf-open-files
+ "C-\\" 'imenu-list-smart-toggle
  )
 
 (provide 'init-keymap)
