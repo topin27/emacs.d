@@ -40,9 +40,6 @@
   (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)) ;; lazy-load
 (setq dired-dwim-target t)
 
-;; (require 'popwin)
-;; (popwin-mode 1)
-
 (autoload
   'ace-jump-mode
   "ace-jump-mode"
@@ -55,9 +52,9 @@
 (require 'projectile)
 (projectile-mode +1)
 (setq projectile-enable-caching t)
-(add-to-list 'projectile-globally-ignored-directories "venv")
+;; (add-to-list 'projectile-globally-ignored-directories "venv")
 ;; (add-to-list 'projectile-globally-ignored-files ".pyc")
-(setq projectile-globally-ignored-files (append '(".pyc" ".class" "~") projectile-globally-ignored-files))
+(setq projectile-globally-ignored-files (append '(".pyc" ".class" "~" ".cache") projectile-globally-ignored-files))
 
 (require 'smex) ; Not needed if you use package.el
 (smex-initialize) ; Can be omitted. This might cause a (minimal) delay

@@ -44,8 +44,6 @@
 (setq auto-mode-alist
       (cons '(".pyx" . cython-mode) auto-mode-alist))
 
-(require 'egg)
-
 (provide 'init-dev)
 
 ;;; init-dev ends here

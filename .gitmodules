@@ -67,6 +67,3 @@
 [submodule "site-lisp/hungry-delete"]
 	path = site-lisp/hungry-delete
 	url = https://github.com/nflath/hungry-delete.git
-[submodule "site-lisp/egg"]
-	path = site-lisp/egg
-	url = https://github.com/byplayer/egg.git
