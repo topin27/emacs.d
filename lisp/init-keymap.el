@@ -48,7 +48,7 @@
  "M-X" 'smex-major-mode-commands
  "M-/" 'hippie-expand
  "C-x C-b" 'ibuffer
- "RET" 'newline-and-indent
+ ;; "RET" 'newline-and-indent
  "<f10>" 'rename-buffer
  "<escape>" 'keyboard-escape-quit
  "C-x C-r" 'recentf-open-files
