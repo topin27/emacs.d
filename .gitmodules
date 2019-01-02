@@ -67,3 +67,6 @@
 [submodule "site-lisp/hungry-delete"]
 	path = site-lisp/hungry-delete
 	url = https://github.com/nflath/hungry-delete.git
+[submodule "site-lisp/dired-rsync"]
+	path = site-lisp/dired-rsync
+	url = https://github.com/stsquad/dired-rsync.git

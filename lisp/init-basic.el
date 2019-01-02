@@ -40,6 +40,8 @@
   (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)) ;; lazy-load
 (setq dired-dwim-target t)
 
+(require 'dired-rsync)
+
 (autoload
   'ace-jump-mode
   "ace-jump-mode"

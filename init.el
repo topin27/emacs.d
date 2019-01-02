@@ -27,6 +27,7 @@
 (add-to-list 'load-path (expand-file-name "site-lisp/f" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "site-lisp/Emacs-wgrep" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "site-lisp/hungry-delete" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "site-lisp/dired-rsync" user-emacs-directory))
 
 (setq user-full-name "Yang Tianping")
 (setq user-mail-address "yangtianpingytp@163.com")
