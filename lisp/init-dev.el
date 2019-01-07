@@ -44,6 +44,8 @@
 (setq auto-mode-alist
       (cons '(".pyx" . cython-mode) auto-mode-alist))
 
+(require 'scala-mode)
+
 (provide 'init-dev)
 
 ;;; init-dev ends here

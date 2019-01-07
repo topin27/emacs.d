@@ -4,18 +4,18 @@
 
 ;;; Code:
 
-(cond
- ((string-equal system-type "gnu/linux")
-  (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH"))))
- ((string-equal system-type "darwin")
-  (setenv "PATH" (concat "~/Library/Python/2.7/bin" ":" "/usr/local/bin" ":" (getenv "PATH")))))
+;; (cond
+;;  ((string-equal system-type "gnu/linux")
+;;   (setenv "PATH" (concat "~/.local/bin" ":" (getenv "PATH"))))
+;;  ((string-equal system-type "darwin")
+;;   (setenv "PATH" (concat "~/Library/Python/2.7/bin" ":" "/usr/local/bin" ":" (getenv "PATH")))))
 
-(cond
- ((string-equal system-type "gnu/linux")
-  (add-to-list 'exec-path "~/.local/bin"))
- ((string-equal system-type "darwin")
-  (add-to-list 'exec-path "~/Library/Python/2.7/bin/")
-  (add-to-list 'exec-path "/usr/local/bin/")))
+;; (cond
+;;  ((string-equal system-type "gnu/linux")
+;;   (add-to-list 'exec-path "~/.local/bin"))
+;;  ((string-equal system-type "darwin")
+;;   (add-to-list 'exec-path "~/Library/Python/2.7/bin/")
+;;   (add-to-list 'exec-path "/usr/local/bin/")))
 
 (setq make-backup-files nil)
 (setq auto-save-default nil)
@@ -39,8 +39,6 @@
 (with-eval-after-load 'dired
   (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)) ;; lazy-load
 (setq dired-dwim-target t)
-
-(require 'dired-rsync)
 
 (autoload
   'ace-jump-mode

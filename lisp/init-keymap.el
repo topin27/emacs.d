@@ -55,11 +55,6 @@
  "C-\\" 'imenu-list-smart-toggle
  )
 
-(general-define-key
- :keymaps 'dired-mode-map
- "Y" 'dired-rsync
- )
-
 (provide 'init-keymap)
 
 ;;; init-keymap ends her
